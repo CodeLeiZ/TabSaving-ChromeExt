@@ -1,10 +1,11 @@
 let myLeads = [];
 
-const inputEl = document.getElementById('input-el');
-const inputBtn = document.getElementById('input-btn');
+const inputEl = document.getElementById('input-el')
+const inputBtn = document.getElementById('input-btn')
 const ulEl = document.getElementById('ul-el')
 const deleteBtn = document.getElementById('delete-btn')
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+const tabBtn = document.getElementById('tab-btn')
 
 if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage
@@ -24,9 +25,18 @@ function render(leads) {
     ulEl.innerHTML = itemList
 }
 
+tabBtn.addEventListener('click', () => {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        myLeads.push(tabs[tabs.length - 1].url);
+        localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+        render(myLeads)
+    })
+
+})
+
 deleteBtn.addEventListener('dblclick', () => {
     localStorage.clear()
-    myLeads = [];
+    myLeads = []
     render(myLeads)
 })
 
