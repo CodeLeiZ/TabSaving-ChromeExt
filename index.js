@@ -41,7 +41,11 @@ deleteBtn.addEventListener('dblclick', () => {
 })
 
 inputBtn.addEventListener('click', () => {
-    myLeads.push(inputEl.value)
+    let url = inputEl.value
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url;  // Add http:// if not present
+    }
+    myLeads.push(url)
     inputEl.value = ""
     localStorage.setItem("myLeads", JSON.stringify(myLeads))
     render(myLeads)
