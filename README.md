@@ -32,4 +32,4 @@ This tool provides a simple yet effective way to manage and access your favorite
 - **HTML/CSS**: Simple structure and styling for the user interface.
 - **localStorage**: Ensures that the saved links persist even when the browser is closed and reopened.
 
-This project was part of my journey through the **Scrimba JavaScript Course**.
+This project was part of my journey through the **Scrimba JavaScript Course**, In addition to the core features taught in the course, I also improved the code, fixed some issues, and added new functionalities to further enhance the project.
