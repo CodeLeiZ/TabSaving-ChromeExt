@@ -40,7 +40,7 @@ deleteBtn.addEventListener('dblclick', () => {
     render(myLeads)
 })
 
-inputBtn.addEventListener('click', () => {
+function save() {
     let url = inputEl.value
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
         url = 'https://' + url;  // Add http:// if not present
@@ -49,4 +49,19 @@ inputBtn.addEventListener('click', () => {
     inputEl.value = ""
     localStorage.setItem("myLeads", JSON.stringify(myLeads))
     render(myLeads)
+}
+
+const events = ['keydown', 'click']
+
+events.forEach(eventType => {
+    inputEl.addEventListener(eventType, function(event) {
+        if (eventType === 'keydown' && event.key === 'Enter') {
+            save()
+        }
+    });
+});
+
+inputBtn.addEventListener('click', () => {
+    save()
 })
+
